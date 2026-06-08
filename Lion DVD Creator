@@ -1,0 +1,214 @@
+#!/bin/bash
+# Installer Mac OS X Lion
+# (c) Copyright 2026 chris1111 
+# This will create a Package Bundle Installer Mac OS X Lion
+PARENTDIR=$(dirname "$0")
+cd "$PARENTDIR"
+# Vars
+apptitle="Installer Mac OS X Lion"
+version="1.0"
+# Set Icon directory and file 
+iconfile="/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns"
+find . -name '.DS_Store' -type f -delete
+
+# Select choice
+response=$(osascript -e 'tell app "System Events" to display dialog "This program will create a bootable ISO image of Lion and determine the size of the DVD to use, 4.7GB or 8.5GB depending on the size of your Install Mac OS X Lion.app.
+
+Please read this NOTE:
+---------------------
+You can create an iso of Mac OS X 10.7x
+
+If you have already create 
+Mac OS X Install DVD.iso on the desktop, 
+it will automatically deleted by the script. 
+
+So If you would like to create more disk images; put the images 
+in a folder apart before continue.\n\nSelect OK to Continue 
+Cancel to Quit" buttons {"Cancel","OK"} default button 2 with title "'"$apptitle"' '"$version"'" with icon POSIX file "'"$iconfile"'"  ')
+
+action=$(echo $response | cut -d ':' -f2)
+
+# Exit if Canceled
+if [ ! "$action" ] ; then
+  osascript -e 'display notification "Program closing" with title "'"$apptitle"'" subtitle "User cancelled"'
+  exit 0
+fi
+
+if [[ $(mount | awk '$3 == "/Volumes/Mac-OSX-Install-DVD" {print $3}') != "" ]]; then
+ hdiutil detach -Force "/Volumes/Mac-OSX-Install-DVD"
+fi
+
+if [[ -d "/Volumes/Mac OS X Install DVD" ]]; then
+ hdiutil detach -Force "/Volumes/Mac OS X Install DVD"
+fi
+
+if [ "/Private/tmp/Mac-OSX.sparseimage" ]; then
+	rm -rf "/Private/tmp/MacOS.sparseimage"
+fi
+
+echo "**********************************************  "
+echo "Starting Mac OS X Install DVD! " 
+
+# Get image file location
+  imagepath=`/usr/bin/osascript << EOT
+    tell application "Finder"
+        activate
+        set imagefilepath to choose file default location "/Applications" with prompt "Choose your Install Mac OS X Lion.app"
+    end tell 
+    return (posix path of imagefilepath) 
+  EOT`
+
+  # Cancel is user selects Cancel
+  if [ ! "$imagepath" ] ; then
+    osascript -e 'display notification "Program closing" with title "'"$apptitle"'" subtitle "User cancelled"'
+    exit 0
+  fi
+
+# Mount the InstallESD image
+hdiutil attach "$imagepath"/Contents/SharedSupport/InstallESD.dmg -noverify -nobrowse -mountpoint /Volumes/Installer-OS	
+Sleep 2
+
+if [ "/$HOME/Desktop/Mac OS X Install DVD.iso" ]; then
+	rm -rf "/$HOME/Desktop/Mac OS X Install DVD.iso"
+fi
+
+# Convert the BaseSystem
+FILE=/Volumes/Installer-OS/BaseSystem.dmg
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+    hdiutil convert /Volumes/Installer-OS/BaseSystem.dmg -format UDSP -o /Private/tmp/MacOS
+fi
+
+# Get the size in Megabytes (4GB = 4096MB)
+SIZE_MB=$(du -sm "$imagepath" | awk '{print $1}')
+
+if [ "$SIZE_MB" -lt 4096 ]; then
+    echo "Success: This application is lower than 4G ($SIZE_MB MB)."
+    osascript -e 'tell app "System Events" to display dialog "You need a 4.7G DVD for this App.\n\n" buttons {"OK"} default button 1 with title "'"$apptitle"' '"$version"'" with icon POSIX file "'"$iconfile"'" giving up after 5'
+    # Increase the sparse bundle capacity
+    hdiutil resize -size 4.2g /Private/tmp/MacOS.sparseimage
+else
+    echo "This application is 4G or larger."
+    osascript -e 'tell app "System Events" to display dialog "You need a 8.5G DVD for this App.\n\n" buttons {"OK"} default button 1 with title "'"$apptitle"' '"$version"'" with icon POSIX file "'"$iconfile"'" giving up after 5'
+    # Increase the sparse bundle capacity
+    hdiutil resize -size 7g /Private/tmp/MacOS.sparseimage
+fi
+
+# Mount the sparse bundle for package addition
+hdiutil attach /Private/tmp/MacOS.sparseimage -noverify -nobrowse -mountpoint /Volumes/Mac-OSX-Install-DVD
+
+echo "  "
+echo "**********************************************  "
+echo "Copying Essentiel!  "   
+echo "**********************************************  "
+
+# Copying Essentiel
+FILE=/Volumes/Installer-OS/mach_kernel
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+    cp -Rp /Volumes/Installer-OS/mach_kernel /Volumes/Mac-OSX-Install-DVD
+fi
+
+FILE=/Volumes/Installer-OS/BaseSystem.chunklist
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+    cp -Rp /Volumes/Installer-OS/BaseSystem.chunklist /Volumes/Mac-OSX-Install-DVD
+fi
+
+echo "Copying Packages! Wait . . ."
+rm -rf "/Volumes/Mac-OSX-Install-DVD/System/Installation/Packages"
+cp -Rp /Volumes/Installer-OS/Packages "/Volumes/Mac-OSX-Install-DVD/System/Installation/Packages"
+
+mkdir -p /Volumes/Mac-OSX-Install-DVD/"Lion DVD Creator"
+Sleep 1
+cp -Rp ./* /Volumes/Mac-OSX-Install-DVD/"Lion DVD Creator"
+
+echo " "
+echo "**********************************************  "
+echo "Install Chameleon! "   
+echo "**********************************************  "
+echo "************ select 1) for PC or 2) for Laptop ************
+Type your choice and press Enter."
+echo " " 
+echo "  1) PC"
+echo "  2) lAPTOP"
+read n
+case $n in
+  1) echo "You chose PC"
+     echo " "
+     cp -Rp ./DVD-PC/* /Volumes/Mac-OSX-Install-DVD;;
+  2) echo "You chose Laptop"
+     echo " "
+     cp -Rp ./DVD-Lptop/* /Volumes/Mac-OSX-Install-DVD;;
+  *) echo "invalid option";;
+esac
+
+install_log="/Volumes/Mac-OSX-Install-DVD/Extra/Chameleon_Install_Log.txt"
+# ---------------------------------------------
+# Creating log file
+# ---------------------------------------------
+echo "" > "$install_log"
+echo "Chameleon installer log - $( date )" >> "$install_log"
+echo "Installer version: Chameleon - Enoch v2.4svn -rev 2923" >> "$install_log"
+echo "Built: > By chris1111" >> "$install_log"
+echo "Build Xcode  9.2 (9C40b) ( date 2026-05-04 11:25:01 )" >> "$install_log"
+echo "======================================================" >> "$install_log"
+diskutil list >> "$install_log"
+
+echo "======================================================" >> "${install_log}"
+echo "========== Using cdboot to /Volumes/Mac-OSX-Install-DVD ===========" >> "${install_log}"
+echo "============= No Active Partition ===================" >> "${install_log}"
+echo "=========== Chameleon Installation Finish ===========" >> "${install_log}"
+Sleep 2
+
+# Unmount the dmg image
+hdiutil detach -Force /Volumes/Mac-OSX-Install-DVD
+
+# Resize the partition in the sparse bundle to remove any free space
+hdiutil resize -size `hdiutil resize -limits /Private/tmp/MacOS.sparseimage | tail -n 1 | awk '{ print $1 }'`b /Private/tmp/MacOS.sparseimage
+
+Sleep 2
+# Mount the dmg image
+hdiutil attach /Private/tmp/MacOS.sparseimage -noverify -nobrowse -mountpoint /Volumes/Mac-OSX-Install-DVD
+
+echo " "
+echo "**********************************************  "
+echo "Create iso image 
+Type Your Password!"   
+echo "**********************************************  "
+echo " "
+# Create ISO image
+sudo hdiutil makehybrid -o "$HOME/Desktop/Mac OS X Install DVD.iso" "/Volumes/Mac-OSX-Install-DVD" -iso -hfs -joliet -eltorito-boot "/Volumes/Mac-OSX-Install-DVD/usr/standalone/i386/cdboot" -no-emul-boot -hfs-volume-name "Mac OS X Install DVD" -joliet-volume-name "Mac OS X Install DVD"
+
+echo "**********************************************  "
+echo "Unmount Installer image!  "
+echo "**********************************************  "
+Sleep 1
+hdiutil detach -Force /Volumes/Installer-OS
+hdiutil detach -Force /Volumes/"Mac-OSX-Install-DVD"
+Sleep 1
+# Remove dmg and Clover
+rm -rf /Private/tmp/MacOS.sparseimage
+rm -rf /Private/tmp/Installer.zip
+rm -rf /Private/tmp/Installer
+echo "  "
+echo " "
+echo "**********************************************  "
+echo "Burning DVD! "   
+echo "**********************************************  "
+read -n 1 -p "Would you like to  Burn the DVD or Exit? (B/E)
+Type B for burning the DVD. Make sure the DVD is in the tray!
+Type E for Exit " dvd;
+echo " "
+
+case $dvd in
+    b|B)
+        hdiutil burn -noverifyburn $HOME/Desktop/"Mac OS X Install DVD.iso";;
+    *)
+        Open -R ~/Desktop/"Mac OS X Install DVD.iso"
+        exit;;
+esac
+
+echo "**********************************************  "
+echo "Mac OS X Install DVD Done !  "
+echo "**********************************************  "

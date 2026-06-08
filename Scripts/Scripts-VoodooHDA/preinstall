@@ -1,0 +1,54 @@
+#!/bin/sh
+# VoodooHDA 2.9.0d10
+
+echo "postinstall: Path to installer....... $1"
+echo "postinstall: Path to destination..... $2"
+echo "postinstall: Path to dest volume..... $3"
+echo "postinstall: Root of system folder... $4"
+
+#############################################
+############### Start script ################
+#############################################
+
+### Backup for AppleHDA.kext ###
+
+date=`date -j +%F-%Hh%M`
+
+for i in AppleHDA VoodooHDA; do
+
+        if [ -e "${3}"/System/Library/Extensions/$i.kext ]; then
+                if [ -n "${3}"/$HOME/Desktop/Backup\ Extensions/$date ]; then
+                        echo "creating Backup Directory..."
+                        mkdir -p "${3}"/$HOME/Desktop/Backup\ Extensions/$date
+                fi
+                cp -R "${3}"/System/Library/Extensions/$i.kext "${3}"/$HOME/Desktop/Backup\ Extensions/$date	
+		rm -R "${3}"/System/Library/Extensions/$i.kext
+
+        fi
+        if [ -e "${3}"/Extra/Extensions/$i.kext ]; then
+                if [ -n "${3}"/$HOME/Desktop/Backup\ Extensions/$date ]; then
+                        echo "creating Backup Directory..."
+                        mkdir -p "${3}"/$HOME/Desktop/Backup\ Extensions/$date
+                fi
+                cp -R "${3}"/Extra/Extensions/$i.kext "${3}"/$HOME/Desktop/Backup\ Extensions/$date
+                rm -R "${3}"/Extra/Extensions/$i.kext
+
+        fi
+
+done
+
+### Install for VoodooHDA.kext ###
+if [ -d "$3/System/Library/Extensions/AppleHDADisabler.kext" ];then
+    rm -rf "$3/System/Library/Extensions/AppleHDADisabler.kext"
+fi
+
+if [ -d "$3/System/Library/Extensions/VoodooHDA.kext" ];then
+    rm -rf "$3/System/Library/Extensions/VoodooHDA.kext"
+fi
+
+
+#############################################
+############### Finish script ###############
+#############################################
+
+exit 0
