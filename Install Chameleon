@@ -74,11 +74,11 @@ echo "Build Xcode  9.2 (9C40b) ( date 2026-05-04 11:25:01 )" >> "$install_log"
 echo "======================================================" >> "$install_log"
 diskutil list >> "$install_log"
 
-echo "====================================================================================" >> "${install_log}"
-echo "================ Stage 0 loader not written to /dev/"$Bootloader". =================" >> "${install_log}"
-echo "==================== Written boot1h to /dev/r"$Bootloader"s2. ======================" >> "${install_log}"
-echo "==================== Written boot file on /dev/"$Bootloader"s2. ====================" >> "${install_log}"
-echo "=========================== Chameleon Installation Finish ==========================" >> "${install_log}"
+echo "======================================================" >> "${install_log}"
+echo "===== Stage 0 loader not written to /dev/"$Bootloader". ======" >> "${install_log}"
+echo "===== Written boot1h to /dev/r"$Bootloader"s2. =====" >> "${install_log}"
+echo "===== Written boot file on /dev/"$Bootloader"s2. ===" >> "${install_log}"
+echo "========== Chameleon Installation Finish ==========" >> "${install_log}"
 Sleep 2
 
 sudo cp -Rp ./VoodooHDA/Prefpane/VoodooHDA.prefPane "$imagepath"/Library/PreferencePanes
