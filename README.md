@@ -1,4 +1,7 @@
 # Lion-DVD-Creator
+
+<img loading="lazy" width="256" alt="Strating" src="https://github.com/chris1111/Lion-DVD-Creator/blob/main/Pics/Disk.png">
+
 ## This package is used in two steps:
 - Step 1: Create the 4.7GB or 8.5GB DVD
 - Step 2: Install Chameleon and the Network and Audio Drivers
