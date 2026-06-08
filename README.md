@@ -10,8 +10,18 @@
 ### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
 ### Package created by chris1111
 
+This program will create a bootable ISO image of Lion and determine the size of the DVD to use, 4.7GB or 8.5GB depending on the size of your Install Mac OS X Lion.app.
 
-<img loading="lazy" width="500" alt="Strating" src="https://github.com/chris1111/Lion-DVD-Creator/blob/main/Pics/Screenshot.png">
+Please read this NOTE:
+---------------------
+You can create an iso of Mac OS X 10.7x
+
+If you have already create 
+Mac OS X Install DVD.iso on the desktop, 
+it will automatically deleted by the script. 
+
+So If you would like to create more disk images; put the images 
+in a folder apart before continue
 
 
 
