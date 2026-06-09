@@ -6,7 +6,7 @@
 - Step 1: Create the 4.7GB or 8.5GB DVD
 - Step 2: Install Chameleon and the Network and Audio Drivers
 ### Everything is done manually using bash scripts.
-- You can use this utility from Snow Leopard 10.6.7 up to macOS Tahoe 26
+- You can use this utility to create a DVD from Snow Leopard 10.6.7 up to macOS Tahoe 26
 
 ### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
 ### Package created by chris1111
