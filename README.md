@@ -9,6 +9,8 @@ For Hackintosh PC and Laptop
 - Step 1: Create the 4.7GB or 8.5GB DVD
 - Step 2: Install Chameleon and the Network and Audio Drivers to the SSD were Lion is installed
 ### Everything is done manually using bash scripts.
+- Read the script ➥ [Lion DVD Creator](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Lion%20DVD%20Creator)
+- Read the script ➥ [Install Chameleon](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Install%20Chameleon)
 - You can use this utility from Snow Leopard 10.6.7 up to macOS Tahoe 26 to create a DVD.
 ------------------------------------------------------------
 ### Usage: ⬇︎
