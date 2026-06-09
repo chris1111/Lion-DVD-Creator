@@ -10,6 +10,8 @@
 ### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
 ### Package created by chris1111
 
+Download the latest Lion 10.7.5 from Apple ➦ [Mac OS X Lion](https://support.apple.com/en-ca/106383) But this one is for a 8.5g DVD Double Layer
+
 This program will create a bootable ISO image of Lion and determine the size of the DVD to use, 4.7GB or 8.5GB depending on the size of your Install Mac OS X Lion.app.
 
 Please read this NOTE:
