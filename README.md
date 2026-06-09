@@ -41,7 +41,7 @@ So If you would like to create more disk images; put the images
 in a folder apart before continue
 
 ------------------------------------------------------------
-### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
+### Thanks to Chameleon team for Chameleon
 ### Package created by chris1111
 - Chameleon - Enoch v2.4svn -rev 2923 ⟨Build Xcode  9.2 (9C40b) ( date 2026-05-04 11:25:01 )⟩
 
