@@ -7,9 +7,8 @@
 - Step 2: Install Chameleon and the Network and Audio Drivers
 ### Everything is done manually using bash scripts.
 - You can use this utility from Snow Leopard 10.6.7 up to macOS Tahoe 26 to create a DVD.
+------------------------------------------------------------
 
-### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
-### Package created by chris1111
 
 #### Download the latest Lion 10.7.5 from Apple ➦ [Mac OS X Lion 10.7.5](https://support.apple.com/en-ca/106383) This one is for a 8.5g DVD Double Layer
 #### Download Lion 10.7 from Internet Archive ➦ [Mac OS X Lion](https://archive.org/details/install-mac-os-x-lion.app) This one is for a 4.7g DVD
@@ -26,6 +25,10 @@ it will automatically deleted by the script.
 
 So If you would like to create more disk images; put the images 
 in a folder apart before continue
+
+------------------------------------------------------------
+### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
+### Package created by chris1111
 
 
 
