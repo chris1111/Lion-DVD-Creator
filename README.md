@@ -43,7 +43,7 @@ in a folder apart before continue
 ------------------------------------------------------------
 ### Thanks to Chameleon team for Chameleon - Enoch v2.4svn -rev 2923
 ### Package created by chris1111
-- Build Xcode  9.2 (9C40b) ( date 2026-05-04 11:25:01 )
+- Chameleon - Enoch v2.4svn -rev 2923 ⟨Build Xcode  9.2 (9C40b) ( date 2026-05-04 11:25:01 )⟩
 
 
 
