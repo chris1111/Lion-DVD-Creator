@@ -79,10 +79,10 @@ if [ -f "$FILE" ]; then
     hdiutil convert /Volumes/Installer-OS/BaseSystem.dmg -format UDSP -o /Private/tmp/MacOS
 fi
 
-# Get the size in Megabytes (4GB = 4096MB)
+# Get the size in Megabytes (4GB = 4000MB)
 SIZE_MB=$(du -sm "$imagepath" | awk '{print $1}')
 
-if [ "$SIZE_MB" -lt 4096 ]; then
+if [ "$SIZE_MB" -lt 4000 ]; then
     echo "Success: This application is lower than 4G ($SIZE_MB MB)."
     osascript -e 'tell app "System Events" to display dialog "You need a 4.7G DVD for this App.\n\n" buttons {"OK"} default button 1 with title "'"$apptitle"' '"$version"'" with icon POSIX file "'"$iconfile"'" giving up after 5'
     # Increase the sparse bundle capacity
