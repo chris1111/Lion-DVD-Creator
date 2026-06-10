@@ -39,6 +39,9 @@ sudo dd if=boot1h of=/dev/r"$Bootloader"s2
 # Copying boot file
 echo  "Copying boot file "
 sudo cp -Rp boot "$imagepath"
+Sleep 1
+sudo chflags hidden "$imagepath"/boot
+echo "boot file hidden ${3}/boot"
 
 PARENTDIR=$(dirname "$0")
 cd "$PARENTDIR"
@@ -87,10 +90,8 @@ sudo ./Scripts/Scripts-VoodooHDA/preinstall
 sudo cp -Rp ./VoodooHDA/Kext/VoodooHDA.kext "$imagepath"/System/Library/Extensions
 sudo cp -Rp ./VoodooHDA/Kext/AppleHDADisabler.kext "$imagepath"/System/Library/Extensions
 sudo ./Scripts/Scripts-VoodooHDA/postinstall
-# hide boot file
-sudo chflags hidden "$imagepath"/boot
+# hide usr
 sudo chflags hidden "$imagepath"/usr
-echo "boot file hidden ${3}/boot"
 Sleep 2
 osascript -e 'tell app "loginwindow" to «event aevtrrst»'
 done
