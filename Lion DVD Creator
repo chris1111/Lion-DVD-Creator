@@ -1,7 +1,7 @@
 #!/bin/bash
 # Installer Mac OS X Lion
 # (c) Copyright 2026 chris1111 
-# This will create a Package Bundle Installer Mac OS X Lion
+# This will create an iso of Mac OS X Lion
 PARENTDIR=$(dirname "$0")
 cd "$PARENTDIR"
 # Vars
