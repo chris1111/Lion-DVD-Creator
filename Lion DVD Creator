@@ -187,10 +187,8 @@ Sleep 1
 hdiutil detach -Force /Volumes/Installer-OS
 hdiutil detach -Force /Volumes/"Mac-OSX-Install-DVD"
 Sleep 1
-# Remove dmg and Clover
+# Remove dmg
 rm -rf /Private/tmp/MacOS.sparseimage
-rm -rf /Private/tmp/Installer.zip
-rm -rf /Private/tmp/Installer
 echo "  "
 echo " "
 echo "**********************************************  "
