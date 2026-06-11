@@ -29,6 +29,8 @@ Or Download ➤ [Lion DVD Creator](https://github.com/chris1111/Lion-DVD-Creator
 #### Download the latest Lion 10.7.5 from Apple ➦ [Mac OS X Lion 10.7.5](https://support.apple.com/en-ca/106383) This one is for a 8.5g DVD Double Layer
 #### Download Lion 10.7 from Internet Archive ➦ [Mac OS X Lion](https://archive.org/details/install-mac-os-x-lion.app) This one is for a 4.7g DVD
 
+### Get ArticFox a compatible Browser for Lion ➤ [Arctic-Fox](https://github.com/rmottola/Arctic-Fox)
+
 Please read this NOTE:
 ---------------------
 You can create an iso of Mac OS X 10.7x
