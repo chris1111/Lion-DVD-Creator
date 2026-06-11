@@ -68,6 +68,12 @@ echo "Starting Mac OS X Install DVD! "
 hdiutil attach "$imagepath"/Contents/SharedSupport/InstallESD.dmg -noverify -nobrowse -mountpoint /Volumes/Installer-OS	
 Sleep 2
 
+osascript <<EOD
+  tell application "Terminal"
+      activate
+  end tell
+EOD
+
 if [ "/$HOME/Desktop/Mac OS X Install DVD.iso" ]; then
 	rm -rf "/$HOME/Desktop/Mac OS X Install DVD.iso"
 fi
@@ -96,6 +102,12 @@ fi
 
 # Mount the sparse bundle for package addition
 hdiutil attach /Private/tmp/MacOS.sparseimage -noverify -nobrowse -mountpoint /Volumes/Mac-OSX-Install-DVD
+
+osascript <<EOD
+  tell application "Terminal"
+      activate
+  end tell
+EOD
 
 echo "  "
 echo "**********************************************  "
@@ -175,6 +187,12 @@ Sleep 2
 # Mount the dmg image
 hdiutil attach /Private/tmp/MacOS.sparseimage -noverify -nobrowse -mountpoint /Volumes/Mac-OSX-Install-DVD
 
+osascript <<EOD
+  tell application "Terminal"
+      activate
+  end tell
+EOD
+
 echo " "
 echo "**********************************************  "
 echo "Create iso image 
@@ -183,6 +201,12 @@ echo "**********************************************  "
 echo " "
 # Create ISO image
 sudo hdiutil makehybrid -o "$HOME/Desktop/Mac OS X Install DVD.iso" "/Volumes/Mac-OSX-Install-DVD" -iso -hfs -joliet -eltorito-boot "/Volumes/Mac-OSX-Install-DVD/usr/standalone/i386/cdboot" -no-emul-boot -hfs-volume-name "Mac OS X Install DVD" -joliet-volume-name "Mac OS X Install DVD"
+
+osascript <<EOD
+  tell application "Terminal"
+      activate
+  end tell
+EOD
 
 echo "**********************************************  "
 echo "Unmount Installer image!  "

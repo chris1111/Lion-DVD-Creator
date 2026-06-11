@@ -36,6 +36,12 @@ sudo dd if=boot1h of=/dev/r"$Bootloader"s2
     exit 0
   fi
 
+osascript <<EOD
+  tell application "Terminal"
+      activate
+  end tell
+EOD
+
 # Copying boot file
 echo  "Copying boot file "
 sudo cp -Rp boot "$imagepath"
