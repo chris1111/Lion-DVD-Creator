@@ -123,6 +123,10 @@ mkdir -p /Volumes/Mac-OSX-Install-DVD/"Lion DVD Creator"
 Sleep 1
 cp -Rp ./* /Volumes/Mac-OSX-Install-DVD/"Lion DVD Creator"
 
+# ---------------------------------------------
+# Installing Extra Chameleon
+# ---------------------------------------------
+
 echo " "
 echo "**********************************************  "
 echo "Install Chameleon! "   
