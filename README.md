@@ -1,6 +1,5 @@
 # Lion-DVD-Creator
 For Hackintosh PC and Laptop
-- The ISO image that is created works on a real Mac.
 
 <img loading="lazy" width="256" alt="Strating" src="https://github.com/chris1111/Lion-DVD-Creator/blob/main/Pics/Disk.png">
 
