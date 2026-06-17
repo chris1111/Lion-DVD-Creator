@@ -249,12 +249,15 @@ options=("Burn the DVD" "Exit")
 function option1 {
     echo "You selected Burn the DVD"
     hdiutil burn -noverifyburn $HOME/Desktop/"Mac OS X Install DVD.iso"
+    Sleep 1
+    Open -R ~/Desktop/"Mac OS X Install DVD.iso"
 }
 
 
 function option2 {
     echo "You choose to Quit"
-    Sleep 2
+    Sleep 1
+    Open -R ~/Desktop/"Mac OS X Install DVD.iso"
 }
 
 
