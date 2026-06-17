@@ -143,21 +143,41 @@ echo " "
 echo "**********************************************  "
 echo "Install Chameleon! "   
 echo "**********************************************  "
-echo "************ select 1) for PC or 2) for Laptop ************
+echo "Select 1 for PC or 2 for Laptop
 Type your choice and press Enter."
-echo " " 
-echo "  1) PC"
-echo "  2) lAPTOP"
-read n
-case $n in
-  1) echo "You chose PC"
-     echo " "
-     cp -Rp ./DVD-PC/* /Volumes/Mac-OSX-Install-DVD;;
-  2) echo "You chose Laptop"
-     echo " "
-     cp -Rp ./DVD-Lptop/* /Volumes/Mac-OSX-Install-DVD;;
-  *) echo "invalid option";;
-esac
+
+
+options=("PC" "Laptop")
+
+
+function option1 {
+    echo "You selected PC"
+    cp -Rp ./DVD-PC/* /Volumes/Mac-OSX-Install-DVD
+}
+
+
+function option2 {
+    echo "You selected Laptop"
+    cp -Rp ./DVD-Lptop/* /Volumes/Mac-OSX-Install-DVD
+}
+
+
+PS3="Please enter your choice: Following by Enter "
+select option in "${options[@]}"; do
+    case $option in
+        "PC")
+            option1
+            break
+            ;;
+        "Laptop")
+            option2
+            break
+            ;;
+        *)
+            echo "Invalid option. Try again."
+            ;;
+    esac
+done
 
 install_log="/Volumes/Mac-OSX-Install-DVD/Extra/Chameleon_Install_Log.txt"
 # ---------------------------------------------
@@ -218,23 +238,39 @@ Sleep 1
 # Remove dmg
 rm -rf /Private/tmp/MacOS.sparseimage
 echo "  "
-echo " "
+echo "  "
 echo "**********************************************  "
 echo "Burning DVD! "   
 echo "**********************************************  "
-read -n 1 -p "Would you like to  Burn the DVD or Exit? (B/E)
-Type B for burning the DVD. Make sure the DVD is in the tray!
-Type E for Exit " dvd;
-echo " "
 
-case $dvd in
-    b|B)
-        hdiutil burn -noverifyburn $HOME/Desktop/"Mac OS X Install DVD.iso";;
-    *)
-        Open -R ~/Desktop/"Mac OS X Install DVD.iso"
-        exit;;
-esac
+options=("Burn the DVD" "Exit")
 
-echo "**********************************************  "
-echo "Mac OS X Install DVD Done !  "
-echo "**********************************************  "
+
+function option1 {
+    echo "You selected Burn the DVD"
+    hdiutil burn -noverifyburn $HOME/Desktop/"Mac OS X Install DVD.iso"
+}
+
+
+function option2 {
+    echo "You choose to Quit"
+    Sleep 2
+}
+
+
+PS3="Please enter your choice: Following by Enter "
+select option in "${options[@]}"; do
+    case $option in
+        "Burn the DVD")
+            option1
+            break
+            ;;
+        "Exit")
+            option2
+            break
+            ;;
+        *)
+            echo "Invalid option. Try again."
+            ;;
+    esac
+done

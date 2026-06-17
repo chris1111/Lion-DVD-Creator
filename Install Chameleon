@@ -52,24 +52,45 @@ echo "boot file hidden ${3}/boot"
 PARENTDIR=$(dirname "$0")
 cd "$PARENTDIR"
 
+echo " "
 echo "**********************************************  "
 echo "Install Chameleon! "   
 echo "**********************************************  "
-echo "************ select 1) for PC or 2) for Laptop ************
+echo "Select 1 for PC or 2 for Laptop
 Type your choice and press Enter."
-echo " " 
-echo "  1) PC"
-echo "  2) lAPTOP"
-read n
-case $n in
-  1) echo "You chose PC"
-     echo " "
-     sudo cp -Rp ./DVD-PC/* "$imagepath";;
-  2) echo "You chose Laptop"
-     echo " "
-     sudo cp -Rp ./DVD-Lptop/* "$imagepath";;
-  *) echo "invalid option";;
-esac
+
+
+options=("PC" "Laptop")
+
+
+function option1 {
+    echo "You selected PC"
+    sudo cp -Rp ./DVD-PC/* "$imagepath"
+}
+
+
+function option2 {
+    echo "You selected Laptop"
+    sudo cp -Rp ./DVD-Lptop/* "$imagepath"
+}
+
+
+PS3="Please enter your choice: Following by Enter "
+select option in "${options[@]}"; do
+    case $option in
+        "PC")
+            option1
+            break
+            ;;
+        "Laptop")
+            option2
+            break
+            ;;
+        *)
+            echo "Invalid option. Try again."
+            ;;
+    esac
+done
 
 install_log="$imagepath"/Extra/Chameleon_Install_Log.txt
 # ---------------------------------------------
