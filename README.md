@@ -1,7 +1,7 @@
 # Lion-DVD-Creator
 For Hackintosh PC and Laptop
 
-<img src="https://github.com/chris1111/Lion-DVD-Creator/blob/main/Pics/Disk.png">
+<a href="https://github.com/chris1111/Lion-DVD-Creator"><img src="https://github.com/chris1111/Lion-DVD-Creator/blob/main/Pics/Disk.png" alt="Project" style="width:256px;height:256px;"></a>
 
 #### This program will create a bootable ISO image of Lion and determine the size of the DVD to use, 4.7GB or 8.5GB depending on the size of your Install Mac OS X Lion.app.
 ## This package is used in two steps:
