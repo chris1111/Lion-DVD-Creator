@@ -121,12 +121,6 @@ if [ -f "$FILE" ]; then
     cp -Rp /Volumes/Installer-OS/mach_kernel /Volumes/Mac-OSX-Install-DVD
 fi
 
-FILE=/Volumes/Installer-OS/BaseSystem.chunklist
-if [ -f "$FILE" ]; then
-    echo "$FILE exists."
-    cp -Rp /Volumes/Installer-OS/BaseSystem.chunklist /Volumes/Mac-OSX-Install-DVD
-fi
-
 echo "Copying Packages! Wait . . ."
 rm -rf "/Volumes/Mac-OSX-Install-DVD/System/Installation/Packages"
 cp -Rp /Volumes/Installer-OS/Packages "/Volumes/Mac-OSX-Install-DVD/System/Installation/Packages"
