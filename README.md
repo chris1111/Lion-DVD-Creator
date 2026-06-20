@@ -30,7 +30,7 @@ Or Download ➤ [Lion DVD Creator](https://github.com/chris1111/Lion-DVD-Creator
 ### Get ArticFox a compatible Browser for Lion ➤ [Arctic-Fox](https://github.com/rmottola/Arctic-Fox)
 
 Please read this NOTE:
----------------------
+----------------------
 You can create an iso of Mac OS X 10.7x
 
 If you have already create 
