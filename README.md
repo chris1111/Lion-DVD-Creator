@@ -22,6 +22,8 @@ Or Download ➤ [Lion DVD Creator](https://github.com/chris1111/Lion-DVD-Creator
 
 ### 🎦 Video Usage ➤ [View Video](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Video-Usage.md)
 
+### A simple Widget for the project ➤ [Chameleon Forever](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Widget-Usage.md)
+
 ------------------------------------------------------------
 ## Get Mac OS X Lion
 #### Download the latest Lion 10.7.5 from Apple ➦ [Mac OS X Lion 10.7.5](https://support.apple.com/en-ca/106383) This one is for a 8.5g DVD Double Layer
