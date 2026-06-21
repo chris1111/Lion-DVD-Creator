@@ -1,4 +1,5 @@
 ## Usage: Widget ⬇︎
+- Double clic to install the widget
 
 Download Widget ➥ [Chameleon Forever](https://github.com/chris1111/Lion-DVD-Creator/releases/download/V1/Chameleon-Forever-Lion.wdgt.zip)
 
