@@ -111,6 +111,7 @@ echo "===== Written boot file on /dev/"$Bootloader"s2. ===" >> "${install_log}"
 echo "========== Chameleon Installation Finish ==========" >> "${install_log}"
 Sleep 2
 
+# Install VoodooHDA
 sudo cp -Rp ./VoodooHDA/Prefpane/VoodooHDA.prefPane "$imagepath"/Library/PreferencePanes
 sudo cp -Rp ./VoodooHDA/Bin/getdump "$imagepath"/usr/local/bin
 sudo ./Scripts/Scripts-VoodooHDA/preinstall
