@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>11A494</string>
+	<string>11E53</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -25,17 +25,17 @@
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
-	<string></string>
+	<string>11E53</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>11A494</string>
+	<string>11E53</string>
 	<key>DTSDKName</key>
 	<string></string>
 	<key>DTXcode</key>
 	<string>0410</string>
 	<key>DTXcodeBuild</key>
-	<string></string>
+	<string>11E53</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>nvenet</key>

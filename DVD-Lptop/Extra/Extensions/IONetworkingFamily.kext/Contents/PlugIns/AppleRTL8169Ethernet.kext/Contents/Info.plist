@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BuildMachineOSBuild</key>
+	<string>11A511</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -24,6 +26,20 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.1.4a5</string>
+	<key>DTCompiler</key>
+	<string></string>
+	<key>DTPlatformBuild</key>
+	<string>4B110</string>
+	<key>DTPlatformVersion</key>
+	<string>GM</string>
+	<key>DTSDKBuild</key>
+	<string>11A511</string>
+	<key>DTSDKName</key>
+	<string></string>
+	<key>DTXcode</key>
+	<string>0410</string>
+	<key>DTXcodeBuild</key>
+	<string>4B110</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>RTL8101E</key>
@@ -116,17 +132,17 @@
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IONetworkingFamily</key>
-		<string>1.5</string>
+		<string>1.4.3</string>
 		<key>com.apple.iokit.IOPCIFamily</key>
-		<string>1.7</string>
+		<string>1.6</string>
 		<key>com.apple.kpi.bsd</key>
-		<string>13.0.0</string>
+		<string>8.0.0b2</string>
 		<key>com.apple.kpi.iokit</key>
-		<string>13.0.0</string>
+		<string>8.0.0b2</string>
 		<key>com.apple.kpi.libkern</key>
-		<string>13.0.0</string>
+		<string>8.0.0b2</string>
 		<key>com.apple.kpi.mach</key>
-		<string>13.0.0</string>
+		<string>8.0.0b2</string>
 	</dict>
 	<key>OSBundleRequired</key>
 	<string>Network-Root</string>

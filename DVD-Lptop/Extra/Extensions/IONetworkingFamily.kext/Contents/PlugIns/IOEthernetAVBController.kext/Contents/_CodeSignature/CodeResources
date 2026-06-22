@@ -6,11 +6,18 @@
 	<dict>
 		<key>version.plist</key>
 		<data>
-		lhWA8JgX43uIluC/h7EV0TwJ65w=
+		/pHFQxkvYNDM4TT3VUkIJSDoRAQ=
 		</data>
 	</dict>
 	<key>rules</key>
 	<dict>
+		<key>@[0-9]+</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
+		</dict>
 		<key>^Resources/</key>
 		<true/>
 		<key>^Resources/.*\.lproj/</key>

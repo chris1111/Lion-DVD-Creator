@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>BuildVersion</key>
-	<string>126</string>
+	<string>67</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0d5</string>
+	<string>1.0.1b1</string>
 	<key>ProjectName</key>
 	<string>IOEthernetAVBController</string>
 	<key>SourceVersion</key>
-	<string>100000005000000</string>
+	<string>101002001000000</string>
 </dict>
 </plist>
