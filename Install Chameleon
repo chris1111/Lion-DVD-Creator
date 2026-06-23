@@ -114,10 +114,10 @@ Sleep 2
 # Install VoodooHDA
 sudo cp -Rp ./VoodooHDA/Prefpane/VoodooHDA.prefPane "$imagepath"/Library/PreferencePanes
 sudo cp -Rp ./VoodooHDA/Bin/getdump "$imagepath"/usr/local/bin
-sudo ./Scripts/Scripts-VoodooHDA/preinstall
+sudo ./Scripts/Scripts-VoodooHDA/preinstall "$imagepath"
 sudo cp -Rp ./VoodooHDA/Kext/VoodooHDA.kext "$imagepath"/System/Library/Extensions
 sudo cp -Rp ./VoodooHDA/Kext/AppleHDADisabler.kext "$imagepath"/System/Library/Extensions
-sudo ./Scripts/Scripts-VoodooHDA/postinstall
+sudo ./Scripts/Scripts-VoodooHDA/postinstall "$imagepath"
 # hide usr
 sudo chflags hidden "$imagepath"/usr
 Sleep 2
