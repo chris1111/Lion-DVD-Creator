@@ -117,9 +117,9 @@ echo "======================================================" >> "$install_log"
 diskutil list >> "$install_log"
 
 echo "======================================================" >> "${install_log}"
-echo "===== Stage 0 loader not written to /dev/"$Bootloader". ======" >> "${install_log}"
-echo "===== Written boot1h to /dev/r"$Bootloader"s2. =====" >> "${install_log}"
-echo "===== Written boot file on /dev/"$Bootloader"s2. ===" >> "${install_log}"
+echo "===== Stage 0 loader not written to /dev/"$Bootloader" ======" >> "${install_log}"
+echo "===== Written boot1h to /dev/r"$Bootloader"s2 =====" >> "${install_log}"
+echo "===== Written boot file on /dev/"$Bootloader"s2 ===" >> "${install_log}"
 echo "========== Chameleon Installation Finish ==========" >> "${install_log}"
 Sleep 2
 
