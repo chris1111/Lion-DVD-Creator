@@ -138,8 +138,3 @@ done
 else
 Bootloader="$2"
 fi
-
-
-
-
-
