@@ -21,20 +21,32 @@ cd ./Chameleon/standard/usr/standalone/i386
 sudo fdisk -f boot0 -u -y /dev/r"$Bootloader"
 sudo dd if=boot1h of=/dev/r"$Bootloader"s2
 
-# Get image file location
-  imagepath=`/usr/bin/osascript << EOT
-    tell application "Finder"
-        activate
-        set imagefilepath to choose folder default location "/Volumes" with prompt "Choose your Mac OS X Lion Disk"
-    end tell 
-    return (posix path of imagefilepath) 
-  EOT`
+# 1. Get the list of volume names formatted for AppleScript
+volume_list=$(ls /Volumes | awk '{print "\""$0"\""}' | paste -sd, -)
 
-  # Cancel is user selects Cancel
-  if [ ! "$imagepath" ] ; then
-    osascript -e 'display notification "Program closing" with title "'"$apptitle"'" subtitle "User cancelled"'
+# 2. Trigger the macOS native UI selection window
+selected_volume=$(osascript <<EOT
+    tell application "System Events"
+        activate
+        set chosen to choose from list {$volume_list} with title "Select Volume" with prompt "Choose your Lion disk to proceed:
+Then press the OK button"
+        if chosen is false then
+            return "CANCELLED"
+        else
+            return item 1 of chosen
+        end if
+    end tell
+EOT
+)
+
+# 3. Evaluate user selection
+if [ "$selected_volume" = "CANCELLED" ] || [ -z "$selected_volume" ]; then
+    echo "User cancelled the operation."
     exit 0
-  fi
+fi
+
+echo "You choose $selected_volume"
+Sleep 2
 
 osascript <<EOD
   tell application "Terminal"
@@ -44,9 +56,9 @@ EOD
 
 # Copying boot file
 echo  "Copying boot file "
-sudo cp -Rp boot "$imagepath"
+sudo cp -Rp boot /Volumes/"$selected_volume"
 Sleep 1
-sudo chflags hidden "$imagepath"/boot
+sudo chflags hidden /Volumes/"$selected_volume"/boot
 echo "boot file hidden ${3}/boot"
 
 PARENTDIR=$(dirname "$0")
@@ -54,7 +66,7 @@ cd "$PARENTDIR"
 
 echo " "
 echo "**********************************************  "
-echo "Install Chameleon! "   
+echo "Install Chameleon! to /Volumes/"$selected_volume" "   
 echo "**********************************************  "
 echo "Select 1 for PC or 2 for Laptop
 Type your choice and press Enter."
@@ -65,13 +77,13 @@ options=("PC" "Laptop")
 
 function option1 {
     echo "You selected PC"
-    sudo cp -Rp ./DVD-PC/* "$imagepath"
+    sudo cp -Rp ./DVD-PC/* /Volumes/"$selected_volume"
 }
 
 
 function option2 {
     echo "You selected Laptop"
-    sudo cp -Rp ./DVD-Lptop/* "$imagepath"
+    sudo cp -Rp ./DVD-Lptop/* /Volumes/"$selected_volume"
 }
 
 
@@ -92,7 +104,7 @@ select option in "${options[@]}"; do
     esac
 done
 
-install_log="$imagepath"/Extra/Chameleon_Install_Log.txt
+install_log=/Volumes/"$selected_volume"/Extra/Chameleon_Install_Log.txt
 # ---------------------------------------------
 # Creating log file
 # ---------------------------------------------
@@ -112,14 +124,14 @@ echo "========== Chameleon Installation Finish ==========" >> "${install_log}"
 Sleep 2
 
 # Install VoodooHDA
-sudo cp -Rp ./VoodooHDA/Prefpane/VoodooHDA.prefPane "$imagepath"/Library/PreferencePanes
-sudo cp -Rp ./VoodooHDA/Bin/getdump "$imagepath"/usr/local/bin
-sudo ./Scripts/Scripts-VoodooHDA/preinstall "$imagepath"
-sudo cp -Rp ./VoodooHDA/Kext/VoodooHDA.kext "$imagepath"/System/Library/Extensions
-sudo cp -Rp ./VoodooHDA/Kext/AppleHDADisabler.kext "$imagepath"/System/Library/Extensions
-sudo ./Scripts/Scripts-VoodooHDA/postinstall "$imagepath"
+sudo cp -Rp ./VoodooHDA/Prefpane/VoodooHDA.prefPane /Volumes/"$selected_volume"/Library/PreferencePanes
+sudo cp -Rp ./VoodooHDA/Bin/getdump /Volumes/"$selected_volume"/usr/local/bin
+sudo ./Scripts/Scripts-VoodooHDA/preinstall /"$selected_volume"
+sudo cp -Rp ./VoodooHDA/Kext/VoodooHDA.kext /Volumes/"$selected_volume"/System/Library/Extensions
+sudo cp -Rp ./VoodooHDA/Kext/AppleHDADisabler.kext /Volumes/"$selected_volume"/System/Library/Extensions
+sudo ./Scripts/Scripts-VoodooHDA/postinstall /"$selected_volume"
 # hide usr
-sudo chflags hidden "$imagepath"/usr
+sudo chflags hidden /Volumes/"$selected_volume"/usr
 Sleep 2
 osascript -e 'tell app "loginwindow" to «event aevtrrst»'
 done
