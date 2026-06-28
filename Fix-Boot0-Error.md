@@ -3,7 +3,7 @@
 
 <img width="331" height="271" alt="boot0error" src="https://github.com/user-attachments/assets/1d9d76fa-346b-4cf3-a6db-42ebb3c0bbec" />
 
-#### Boot from the DVD or USB on the install macOS then Once the Mac OS X Installer starts, open Disk Utility by opening the "Utilities" menu in the menu bar.
+#### Boot from the DVD on the install macOS then Once the Mac OS X Installer starts, open Disk Utility by opening the "Utilities" menu in the menu bar.
 
 <img width="640" height="482" alt="DiskUtility" src="https://github.com/user-attachments/assets/57b8a3b4-63c4-42c8-885b-7b0d3da9d8aa" />
 
