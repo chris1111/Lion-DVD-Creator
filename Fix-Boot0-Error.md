@@ -30,7 +30,7 @@ Find the name of the hard disk that Mac OS X is installed on (the one you just u
 ### You have already, the DVD drive with the boot1h file inside. 
 ### Then, in terminal, type:
 
-`cd /Volumes/Mac\ OS\ X\ Install\ DVD/Snow\ DVD\ Creator/Chameleon/standard/usr/standalone/i386`
+`cd /Volumes/Mac\ OS\ X\ Install\ DVD/Lion\ DVD\ Creator/Chameleon/standard/usr/standalone/i386`
 #### Following by Enter:
 
 This is Were boot1h is
