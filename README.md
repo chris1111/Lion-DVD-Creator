@@ -6,7 +6,7 @@ For Hackintosh PC and Laptop
 #### This program will create a bootable ISO image of Lion and determine the size of the DVD to use, 4.7GB or 8.5GB depending on the size of your Install Mac OS X Lion.app.
 ## This package is used in two steps:
 - Step 1: Create the 4.7GB or 8.5GB DVD
-- Step 2: Install Chameleon and the Network and Audio Drivers to the SSD were Lion is installed
+- Step 2: Install Chameleon EFI and the Network and Audio Drivers to the SSD were Lion is installed
 ### Everything is done manually using bash scripts.
 - Read the script ➥ [Lion DVD Creator](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Lion%20DVD%20Creator) ➥ [Install Chameleon](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Install%20Chameleon)
 - You can use this utility from Snow Leopard 10.6.8 up to macOS Tahoe 26 to create a DVD.
@@ -31,7 +31,6 @@ Or Download ➤ [Lion DVD Creator](https://github.com/chris1111/Lion-DVD-Creator
 
 ### Get ArticFox a compatible Browser for Lion ➤ [Arctic-Fox](https://github.com/rmottola/Arctic-Fox)
 
-### Troubleshooting Fix Boot0 GPT ➤ [Fix Boot0 Error](https://github.com/chris1111/Lion-DVD-Creator/blob/main/Fix-Boot0-Error.md)
 
 Please read this NOTE:
 ----------------------
