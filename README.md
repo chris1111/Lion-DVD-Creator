@@ -1,5 +1,6 @@
 # Lion-DVD-Creator
 For Hackintosh PC and Laptop
+- Also [USB-Lion-Creator](https://github.com/chris1111/Lion-DVD-Creator/releases/tag/USB-V1)
 
 <p><img src="Pics/Disk.png" alt="Project" style="width:25%;"></p>
 
