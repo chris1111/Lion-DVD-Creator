@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/chris1111/Lion-DVD-Creator/blob/main/LICENSE) [![pages-build-deployment](https://github.com/chris1111/Lion-DVD-Creator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/chris1111/Lion-DVD/Creator/actions/workflows/pages/pages-build-deployment)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/chris1111/Lion-DVD-Creator/blob/main/LICENSE) [![pages-build-deployment](https://github.com/chris1111/Lion-DVD-Creator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/chris1111/Lion-DVD-Creator/actions/workflows/pages/pages-build-deployment)
 # Lion-DVD-Creator
 For Hackintosh PC and Laptop
 - Also [USB-Lion-Creator](https://github.com/chris1111/Lion-DVD-Creator/releases/tag/USB-V1)
