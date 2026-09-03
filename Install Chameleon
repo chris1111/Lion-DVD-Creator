@@ -53,7 +53,7 @@ Sleep 2
 PARENTDIR=$(dirname "$0")
 cd "$PARENTDIR"
 PC="./DVD-PC/Extra"
-LAPTOP="./DVD-PC/Extra"
+LAPTOP="./DVD-Lptop/Extra"
 diskloader="./Chameleon/standard/usr/standalone/i386/boot0"
 booter="./Chameleon/standard/usr/standalone/i386/boot"
 partitionloaderfat="./Chameleon/standard/usr/standalone/i386/boot1f32"
